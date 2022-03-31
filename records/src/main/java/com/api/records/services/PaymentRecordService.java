@@ -1,7 +1,7 @@
 package com.api.records.services;
 
-import com.api.records.models.PaymentRecordsModel;
-import com.api.records.repositories.PaymentRecordsRepository;
+import com.api.records.models.PaymentRecordModel;
+import com.api.records.repositories.PaymentRecordRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -13,27 +13,27 @@ import java.util.UUID;
 @Service
 public class PaymentRecordService {
 
-    final PaymentRecordsRepository paymentRecordRepository;
+    final PaymentRecordRepository paymentRecordRepository;
 
-    public PaymentRecordService(PaymentRecordsRepository paymentRecordRepository){
+    public PaymentRecordService(PaymentRecordRepository paymentRecordRepository){
         this.paymentRecordRepository = paymentRecordRepository;
     }
 
     @Transactional
-    public Object save(PaymentRecordsModel paymentsRecordModel) {
+    public Object save(PaymentRecordModel paymentsRecordModel) {
         return paymentRecordRepository.save(paymentsRecordModel);
     }
 
-    public Page<PaymentRecordsModel> findAll(Pageable pageable) {
+    public Page<PaymentRecordModel> findAll(Pageable pageable) {
         return paymentRecordRepository.findAll(pageable);
     }
 
-    public Optional<PaymentRecordsModel> findById(UUID id) {
+    public Optional<PaymentRecordModel> findById(UUID id) {
         return paymentRecordRepository.findById(id);
     }
 
     @Transactional
-    public void delete(PaymentRecordsModel paymentRecordsModel) {
-        paymentRecordRepository.delete(paymentRecordsModel);
+    public void delete(PaymentRecordModel paymentRecordModel) {
+        paymentRecordRepository.delete(paymentRecordModel);
     }
 }

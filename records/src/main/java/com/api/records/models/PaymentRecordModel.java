@@ -8,7 +8,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "TB_PAYMENT_RECORDS")
-public class PaymentRecordsModel {
+public class PaymentRecordModel {
 
     @Id
     @GeneratedValue

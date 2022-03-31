@@ -1,7 +1,7 @@
 package com.api.records.controllers;
 
-import com.api.records.dtos.PaymentRecordsDto;
-import com.api.records.models.PaymentRecordsModel;
+import com.api.records.dtos.PaymentRecordDto;
+import com.api.records.models.PaymentRecordModel;
 import com.api.records.services.PaymentRecordService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
@@ -21,30 +21,30 @@ import java.util.UUID;
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/payment-record")
-public class PaymentRecordsController {
+public class PaymentRecordController {
 
     final PaymentRecordService paymentRecordService;
 
-    public PaymentRecordsController(PaymentRecordService paymentRecordService) {
+    public PaymentRecordController(PaymentRecordService paymentRecordService) {
         this.paymentRecordService = paymentRecordService;
     }
 
     @PostMapping
-    public ResponseEntity<Object> savePaymentRecord(@RequestBody @Valid PaymentRecordsDto paymentRecordsDto) {
-        var paymentsRecordModel = new PaymentRecordsModel();
-        BeanUtils.copyProperties(paymentRecordsDto, paymentsRecordModel);
+    public ResponseEntity<Object> savePaymentRecord(@RequestBody @Valid PaymentRecordDto paymentRecordDto) {
+        var paymentsRecordModel = new PaymentRecordModel();
+        BeanUtils.copyProperties(paymentRecordDto, paymentsRecordModel);
         paymentsRecordModel.setPaymentDate(LocalDateTime.now(ZoneId.of("UTC")));
         return ResponseEntity.status(HttpStatus.CREATED).body(paymentRecordService.save(paymentsRecordModel));
     }
 
     @GetMapping
-    public ResponseEntity<Page<PaymentRecordsModel>> getAllPaymentRecords(@PageableDefault(page = 0, size = 10, sort = "id", direction = Sort.Direction.ASC) Pageable pageable) {
+    public ResponseEntity<Page<PaymentRecordModel>> getAllPaymentRecords(@PageableDefault(page = 0, size = 10, sort = "id", direction = Sort.Direction.ASC) Pageable pageable) {
         return ResponseEntity.status(HttpStatus.OK).body(paymentRecordService.findAll(pageable));
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Object> getPaymentRecord(@PathVariable(value = "id") UUID id) {
-        Optional<PaymentRecordsModel> paymentRecordModelOptional =paymentRecordService.findById(id);
+        Optional<PaymentRecordModel> paymentRecordModelOptional =paymentRecordService.findById(id);
         if(!paymentRecordModelOptional.isPresent()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Payment Record not found.");
         }
@@ -53,7 +53,7 @@ public class PaymentRecordsController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> deletePaymentRecord(@PathVariable(value = "id") UUID id) {
-        Optional<PaymentRecordsModel> paymentRecordModelOptional = paymentRecordService.findById(id);
+        Optional<PaymentRecordModel> paymentRecordModelOptional = paymentRecordService.findById(id);
         if(!paymentRecordModelOptional.isPresent()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Payment Record not found.");
         }
@@ -63,15 +63,15 @@ public class PaymentRecordsController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Object> updateCustomerBase(@PathVariable(value = "id") UUID id,
-                                                     @RequestBody @Valid PaymentRecordsDto paymentRecordsDto) {
-        Optional<PaymentRecordsModel> paymentRecordsModelOptional = paymentRecordService.findById(id);
-        if(!paymentRecordsModelOptional.isPresent()) {
+                                                     @RequestBody @Valid PaymentRecordDto paymentRecordDto) {
+        Optional<PaymentRecordModel> paymentRecordModelOptional = paymentRecordService.findById(id);
+        if(!paymentRecordModelOptional.isPresent()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Payment Record not found.");
         }
-        var paymentRecordsModel = new PaymentRecordsModel();
-        BeanUtils.copyProperties(paymentRecordsDto, paymentRecordsModel);
-        paymentRecordsModel.setId(paymentRecordsModelOptional.get().getId());
-        paymentRecordsModel.setPaymentDate(paymentRecordsModelOptional.get().getPaymentDate());
-        return ResponseEntity.status(HttpStatus.OK).body(paymentRecordService.save(paymentRecordsModel));
+        var paymentRecordModel = new PaymentRecordModel();
+        BeanUtils.copyProperties(paymentRecordDto, paymentRecordModel);
+        paymentRecordModel.setId(paymentRecordModelOptional.get().getId());
+        paymentRecordModel.setPaymentDate(paymentRecordModelOptional.get().getPaymentDate());
+        return ResponseEntity.status(HttpStatus.OK).body(paymentRecordService.save(paymentRecordModel));
     }
 }

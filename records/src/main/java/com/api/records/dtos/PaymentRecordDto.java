@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.UUID;
 
-public class PaymentRecordsDto {
+public class PaymentRecordDto {
 
     private UUID customerKey; //UUID.fromString("29089735-9169-40fd-815a-2c90a0f84051")
 
