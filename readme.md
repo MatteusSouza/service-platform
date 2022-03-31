@@ -11,7 +11,7 @@ Baixe tudo por aqui - [Google Drive](https://drive.google.com/drive/folders/1yLc
 #### Como configurar: 
 
  1. Instale o PostgreSQL
- 2. Crie um dois Banco de dados no pgAdmin:
+ 2. Crie dois Bancos de dados no pgAdmin (um para o customer-base e outro para records):
 		<img src="./prints/cria-db-ex1.png">
 		<img src="./prints/cria-db-ex2.png">
  3. Em ambos os projetos, dentro da pasta main>resources, altere o arquivo application.properties e configure o caminho do banco de dados e a senha:
