@@ -50,6 +50,7 @@ public class CustomerBaseModel implements Serializable {
     @Column(nullable = false)
     private boolean activeCustomer;
 
+
     public UUID getId() {
         return id;
     }
