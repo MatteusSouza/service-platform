@@ -36,8 +36,6 @@ public class CustomerBaseDto {
     @Range(min = 0,max = 31)
     private int expirationDay;
 
-    @NotNull(message = "activeCustomer can not be null")
-    private boolean activeCustomer = true;
 
     public String getCnpj() {
         return cnpj;
@@ -119,11 +117,4 @@ public class CustomerBaseDto {
         this.expirationDay = expirationDay;
     }
 
-    public boolean isActiveCustomer() {
-        return activeCustomer;
-    }
-
-    public void setActiveCustomer(boolean activeCustomer) {
-        this.activeCustomer = activeCustomer;
-    }
 }

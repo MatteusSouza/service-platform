@@ -38,8 +38,8 @@ public class CustomerBaseController {
         if(customerBaseService.existsByContactEmail(customerBaseDto.getContactEmail())) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Conflict: E-mail is already in use!");
         }
-
         var customerBaseModel = new CustomerBaseModel();
+        customerBaseModel.setActiveCustomer(true);
         customerBaseModel.setExpirationDay(0);
         BeanUtils.copyProperties(customerBaseDto, customerBaseModel);
         customerBaseModel.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
@@ -80,7 +80,35 @@ public class CustomerBaseController {
         var customerBaseModel = new CustomerBaseModel();
         BeanUtils.copyProperties(customerBaseDto, customerBaseModel);
         customerBaseModel.setId(customerBaseModelOptional.get().getId());
+        customerBaseModel.setActiveCustomer(customerBaseModelOptional.get().isActiveCustomer());
         customerBaseModel.setRegistrationDate(customerBaseModelOptional.get().getRegistrationDate());
         return ResponseEntity.status(HttpStatus.OK).body(customerBaseService.save(customerBaseModel));
     }
+
+    @PutMapping("/d/{id}")
+    public ResponseEntity disableCustomer(@PathVariable(value = "id") UUID id) {
+        Optional<CustomerBaseModel> customerBaseModelOptional = customerBaseService.findById(id);
+        if(!customerBaseModelOptional.isPresent()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Customer not found.");
+        }
+        if( !customerBaseModelOptional.get().isActiveCustomer() ) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("This customer has already been deactivated");
+        }
+        customerBaseModelOptional.get().setActiveCustomer(false);
+        return ResponseEntity.status(HttpStatus.OK).body( customerBaseService.save(customerBaseModelOptional.get() ));
+    }
+
+    @PutMapping("/a/{id}")
+    public ResponseEntity activateCustomer(@PathVariable(value = "id") UUID id) {
+        Optional<CustomerBaseModel> customerBaseModelOptional = customerBaseService.findById(id);
+        if(!customerBaseModelOptional.isPresent()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Customer not found.");
+        }
+        if( customerBaseModelOptional.get().isActiveCustomer() ) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("This customer has already been activated");
+        }
+        customerBaseModelOptional.get().setActiveCustomer(true);
+        return ResponseEntity.status(HttpStatus.OK).body( customerBaseService.save(customerBaseModelOptional.get() ));
+    }
+
 }
