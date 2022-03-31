@@ -19,7 +19,7 @@ public class CustomerBaseModel implements Serializable {
     private String cnpj;
 
     @Column(nullable = false, length = 128)
-    private String condominiumName;
+    private String customerName;
 
     @Column(nullable = false, length = 128)
     private String address;
@@ -67,12 +67,12 @@ public class CustomerBaseModel implements Serializable {
         this.cnpj = cnpj;
     }
 
-    public String getCondominiumName() {
-        return condominiumName;
+    public String getCustomerName() {
+        return customerName;
     }
 
-    public void setCondominiumName(String condominiumName) {
-        this.condominiumName = condominiumName;
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
     }
 
     public String getAddress() {

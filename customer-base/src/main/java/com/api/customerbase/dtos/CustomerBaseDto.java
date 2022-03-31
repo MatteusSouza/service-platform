@@ -12,8 +12,8 @@ public class CustomerBaseDto {
     @CNPJ(message = "CNPJ should be valid") //Verificar essa abordagem
     private String cnpj;
 
-    @NotBlank(message = "The Condominium Name cannot be empty")
-    private String condominiumName;
+    @NotBlank(message = "The Customer Name cannot be empty")
+    private String customerName;
 
     @NotBlank(message = "The address cannot be empty")
     private String address;
@@ -47,12 +47,12 @@ public class CustomerBaseDto {
         this.cnpj = cnpj;
     }
 
-    public String getCondominiumName() {
-        return condominiumName;
+    public String getCustomerName() {
+        return customerName;
     }
 
-    public void setCondominiumName(String condominiumName) {
-        this.condominiumName = condominiumName;
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
     }
 
     public String getAddress() {
