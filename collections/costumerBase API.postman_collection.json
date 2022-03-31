@@ -1,0 +1,197 @@
+{
+	"info": {
+		"_postman_id": "baddbd6e-909b-4e1c-906f-c71d548bf668",
+		"name": "costumerBase API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Post Customer Base",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cnpj\": \"18.560.013/0001-80\",\r\n    \"customerName\": \"Condominio Cristal\",\r\n    \"address\": \"R. Morais e Silva, 72 - Maracanã, Rio de Janeiro - RJ, 20271-031\",\r\n    \"contactEmail\": \"edificio-cristal.example@outlook.com\",\r\n    \"phoneNumber1\": \"(21)1234-5679\",\r\n    \"phoneNumber2\": \"(21)91234-5679\",\r\n    \"personContactName\": \"Claudia Araujo\",\r\n    \"personProfession\":  \"Síndica\",\r\n    \"monthlyFee\": 1239.90,\r\n    \"expirationDay\": 5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/customer-base",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"customer-base"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Customer Base",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/customer-base?page=0&size=0&sort=monthlyFee,DESC",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"customer-base"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "0"
+						},
+						{
+							"key": "sort",
+							"value": "registrationDate,ASC",
+							"disabled": true
+						},
+						{
+							"key": "sort",
+							"value": "monthlyFee,DESC"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Customer Base by Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/customer-base/108f4150-ee42-467e-98d3-ab7742b69452",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"customer-base",
+						"108f4150-ee42-467e-98d3-ab7742b69452"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Customer Base by Id",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cnpj\": \"91.560.969/0001-72\",\r\n    \"customerName\": \"Edificio tjuca calas\",\r\n    \"address\": \"R. Morais e Silva, 72 - Maracanã, Rio de Janeiro - RJ, 20271-031\",\r\n    \"contactEmail\": \"edificio-tjuca-calas.example@gmail.com\",\r\n    \"phoneNumber1\": \"(21)1234-5499\",\r\n    \"phoneNumber2\": \"(21)91234-5680\",\r\n    \"personContactName\": \"Claudia Araujo\",\r\n    \"personProfession\":  \"Síndica\",\r\n    \"monthlyFee\": 1240.00,\r\n    \"expirationDay\": 15\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/customer-base/8b25258b-c6f2-4a04-9bbc-c0cef793258a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"customer-base",
+						"8b25258b-c6f2-4a04-9bbc-c0cef793258a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Customer Base",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/customer-base/4d4dcc49-45eb-42fd-b91e-235e2accc02d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"customer-base",
+						"4d4dcc49-45eb-42fd-b91e-235e2accc02d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Disable Customer",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/customer-base/d/8b25258b-c6f2-4a04-9bbc-c0cef793258a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"customer-base",
+						"d",
+						"8b25258b-c6f2-4a04-9bbc-c0cef793258a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Activate Customer",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/customer-base/a/8b25258b-c6f2-4a04-9bbc-c0cef793258a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"customer-base",
+						"a",
+						"8b25258b-c6f2-4a04-9bbc-c0cef793258a"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
