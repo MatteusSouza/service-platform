@@ -1,8 +1,8 @@
-package com.api.records.controllers;
+package com.api.customerbase.controllers;
 
-import com.api.records.dtos.AssistanceRecordDto;
-import com.api.records.models.AssistanceRecordModel;
-import com.api.records.services.AssistanceRecordService;
+import com.api.customerbase.dtos.AssistanceRecordDto;
+import com.api.customerbase.models.AssistanceRecordModel;
+import com.api.customerbase.services.AssistanceRecordService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

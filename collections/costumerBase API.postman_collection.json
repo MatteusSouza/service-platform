@@ -2,7 +2,8 @@
 	"info": {
 		"_postman_id": "baddbd6e-909b-4e1c-906f-c71d548bf668",
 		"name": "costumerBase API",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20249479"
 	},
 	"item": [
 		{
@@ -23,7 +24,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"cnpj\": \"18.560.013/0001-80\",\r\n    \"customerName\": \"Condominio Cristal\",\r\n    \"address\": \"R. Morais e Silva, 72 - Maracanã, Rio de Janeiro - RJ, 20271-031\",\r\n    \"contactEmail\": \"edificio-cristal.example@outlook.com\",\r\n    \"phoneNumber1\": \"(21)1234-5679\",\r\n    \"phoneNumber2\": \"(21)91234-5679\",\r\n    \"personContactName\": \"Claudia Araujo\",\r\n    \"personProfession\":  \"Síndica\",\r\n    \"monthlyFee\": 1239.90,\r\n    \"expirationDay\": 5\r\n}",
+					"raw": "{\r\n    \"cnpj\": \"33.010.204/0001-62\",\r\n    \"customerName\": \"Condominio Diamantina\",\r\n    \"address\": \"R. Morais e Silva, 72 - Maracanã, Rio de Janeiro - RJ, 20271-031\",\r\n    \"contactEmail\": \"edificio-diamantina.example@gmail.com\",\r\n    \"phoneNumber1\": \"(21)1234-3344\",\r\n    \"phoneNumber2\": \"(21)91234-4433\",\r\n    \"personContactName\": \"Luana Fernandes\",\r\n    \"personProfession\":  \"Síndica\",\r\n    \"monthlyFee\": 1233.90,\r\n    \"expirationDay\": 10\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -103,7 +104,7 @@
 			"response": []
 		},
 		{
-			"name": "Update Customer Base by Id",
+			"name": "Update Customer Base",
 			"request": {
 				"method": "PUT",
 				"header": [],

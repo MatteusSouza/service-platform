@@ -2,7 +2,8 @@
 	"info": {
 		"_postman_id": "3870d6df-3e05-4dd7-9757-677fcae018d1",
 		"name": "Records API",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20249479"
 	},
 	"item": [
 		{
@@ -23,12 +24,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8090/payment-record",
+							"raw": "http://localhost:8080/payment-record",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8090",
+							"port": "8080",
 							"path": [
 								"payment-record"
 							]
@@ -42,12 +43,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8090/payment-record",
+							"raw": "http://localhost:8080/payment-record",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8090",
+							"port": "8080",
 							"path": [
 								"payment-record"
 							],
@@ -78,15 +79,15 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8090/payment-record/f599800c-5f04-4923-a345-10ec31050a75",
+							"raw": "http://localhost:8080/payment-record/0fa8ba7b-f4a5-47ca-a1e0-4128c41072f3",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8090",
+							"port": "8080",
 							"path": [
 								"payment-record",
-								"f599800c-5f04-4923-a345-10ec31050a75"
+								"0fa8ba7b-f4a5-47ca-a1e0-4128c41072f3"
 							]
 						}
 					},
@@ -118,15 +119,15 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8090/payment-record/f70db9af-b18a-4f30-bd91-55fe85e7d0bf",
+							"raw": "http://localhost:8080/payment-record/0fa8ba7b-f4a5-47ca-a1e0-4128c41072f3",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8090",
+							"port": "8080",
 							"path": [
 								"payment-record",
-								"f70db9af-b18a-4f30-bd91-55fe85e7d0bf"
+								"0fa8ba7b-f4a5-47ca-a1e0-4128c41072f3"
 							]
 						}
 					},
@@ -138,44 +139,15 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8090/payment-record/f599800c-5f04-4923-a345-10ec31050a75",
+							"raw": "http://localhost:8080/payment-record/0fa8ba7b-f4a5-47ca-a1e0-4128c41072f3",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8090",
+							"port": "8080",
 							"path": [
 								"payment-record",
-								"f599800c-5f04-4923-a345-10ec31050a75"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update Assistance Record  by Id",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"customerKey\": \"19aba9b9-fe2d-4d62-9f02-c986645fcb9a\",\r\n    \"assistanceType\":  \"O Trilho do portão está solto e tranca eletronica quebrado\",\r\n    \"assistanceDescription\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dictum est pellentesque, euismod justo id, egestas lacus. Mauris dignissim scelerisque mauris sit amet efficitur. Ut rhoncus justo eget ante finibus, eget porta eros condimentum. Morbi ullamcorper, urna ac accumsan bibendum, dolor dui tempus dolor, ut condimentum dui nulla eget sem. Morbi molestie vel augue at sollicitudin. Nullam nec lectus ut velit mollis lacinia. Nulla facilisi. Sed et vulputate felis. Suspendisse nec ligula suscipit viverra.\",\r\n    \"customerName\": \"Condominio Cristal\",\r\n    \"customerCnpj\": \"18.560.013/0001-80\",\r\n    \"address\": \"R. Morais e Silva, 72 - Maracanã, Rio de Janeiro - RJ, 20271-031\",\r\n    \"personsName\": \"Claudia Araujo\",\r\n    \"technicianName\": \"José da Fonseca Oliveira\",\r\n    \"priority\": \"1\",\r\n    \"amountCharged\": 250.00\r\n}\r\n",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8090/assistance-record/35cc7177-c9f6-4621-bc40-a5110a17f406",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8090",
-							"path": [
-								"assistance-record",
-								"35cc7177-c9f6-4621-bc40-a5110a17f406"
+								"0fa8ba7b-f4a5-47ca-a1e0-4128c41072f3"
 							]
 						}
 					},
@@ -201,12 +173,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8090/assistance-record",
+							"raw": "http://localhost:8080/assistance-record",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8090",
+							"port": "8080",
 							"path": [
 								"assistance-record"
 							]
@@ -220,12 +192,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8090/assistance-record",
+							"raw": "http://localhost:8080/assistance-record",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8090",
+							"port": "8080",
 							"path": [
 								"assistance-record"
 							],
@@ -251,40 +223,69 @@
 					"response": []
 				},
 				{
-					"name": "Delete Assistance Record",
+					"name": "Get Assistance Record by Id",
 					"request": {
-						"method": "DELETE",
+						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8090/assistance-record/deded058-7fc4-4291-820a-9a51dc4b816d",
+							"raw": "http://localhost:8080/assistance-record/41448526-bbdb-44b1-8502-624cabe9e817",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8090",
+							"port": "8080",
 							"path": [
 								"assistance-record",
-								"deded058-7fc4-4291-820a-9a51dc4b816d"
+								"41448526-bbdb-44b1-8502-624cabe9e817"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Get Assistance Record",
+					"name": "Update Assistance Record",
 					"request": {
-						"method": "GET",
+						"method": "PUT",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"customerKey\": \"19aba9b9-fe2d-4d62-9f02-c986645fcb9a\",\r\n    \"assistanceType\":  \"O Trilho do portão está solto e tranca eletronica quebrado\",\r\n    \"assistanceDescription\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dictum est pellentesque, euismod justo id, egestas lacus. Mauris dignissim scelerisque mauris sit amet efficitur. Ut rhoncus justo eget ante finibus, eget porta eros condimentum. Morbi ullamcorper, urna ac accumsan bibendum, dolor dui tempus dolor, ut condimentum dui nulla eget sem. Morbi molestie vel augue at sollicitudin. Nullam nec lectus ut velit mollis lacinia. Nulla facilisi. Sed et vulputate felis. Suspendisse nec ligula suscipit viverra.\",\r\n    \"customerName\": \"Condominio Cristal\",\r\n    \"customerCnpj\": \"18.560.013/0001-80\",\r\n    \"address\": \"R. Morais e Silva, 72 - Maracanã, Rio de Janeiro - RJ, 20271-031\",\r\n    \"personsName\": \"Claudia Araujo\",\r\n    \"technicianName\": \"José da Fonseca Oliveira\",\r\n    \"priority\": \"1\",\r\n    \"amountCharged\": 250.00\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "http://localhost:8090/assistance-record/35cc7177-c9f6-4621-bc40-a5110a17f406",
+							"raw": "http://localhost:8080/assistance-record/41448526-bbdb-44b1-8502-624cabe9e817",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8090",
+							"port": "8080",
 							"path": [
 								"assistance-record",
-								"35cc7177-c9f6-4621-bc40-a5110a17f406"
+								"41448526-bbdb-44b1-8502-624cabe9e817"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Assistance Record",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/assistance-record/41448526-bbdb-44b1-8502-624cabe9e817",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"assistance-record",
+								"41448526-bbdb-44b1-8502-624cabe9e817"
 							]
 						}
 					},
@@ -295,26 +296,17 @@
 					"request": {
 						"method": "PUT",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"customerKey\": \"19aba9b9-fe2d-4d62-9f02-c986645fcb9a\",\r\n    \"assistanceType\":  \"O Trilho do portão está solto e tranca eletronica quebrado\",\r\n    \"assistanceDescription\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dictum est pellentesque, euismod justo id, egestas lacus. Mauris dignissim scelerisque mauris sit amet efficitur. Ut rhoncus justo eget ante finibus, eget porta eros condimentum. Morbi ullamcorper, urna ac accumsan bibendum, dolor dui tempus dolor, ut condimentum dui nulla eget sem. Morbi molestie vel augue at sollicitudin. Nullam nec lectus ut velit mollis lacinia. Nulla facilisi. Sed et vulputate felis. Suspendisse nec ligula suscipit viverra.\",\r\n    \"customerName\": \"Condominio Cristal\",\r\n    \"customerCnpj\": \"18.560.013/0001-80\",\r\n    \"address\": \"R. Morais e Silva, 72 - Maracanã, Rio de Janeiro - RJ, 20271-031\",\r\n    \"personsName\": \"Claudia Araujo\",\r\n    \"technicianName\": \"José da Fonseca Oliveira\",\r\n    \"priority\": \"0\",\r\n    \"amountCharged\": 250.00\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
-							"raw": "http://localhost:8090/assistance-record/c/35cc7177-c9f6-4621-bc40-a5110a17f406",
+							"raw": "http://localhost:8080/assistance-record/c/41448526-bbdb-44b1-8502-624cabe9e817",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8090",
+							"port": "8080",
 							"path": [
 								"assistance-record",
 								"c",
-								"35cc7177-c9f6-4621-bc40-a5110a17f406"
+								"41448526-bbdb-44b1-8502-624cabe9e817"
 							]
 						}
 					},
@@ -326,16 +318,16 @@
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8090/assistance-record/o/35cc7177-c9f6-4621-bc40-a5110a17f406",
+							"raw": "http://localhost:8080/assistance-record/o/41448526-bbdb-44b1-8502-624cabe9e817",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8090",
+							"port": "8080",
 							"path": [
 								"assistance-record",
 								"o",
-								"35cc7177-c9f6-4621-bc40-a5110a17f406"
+								"41448526-bbdb-44b1-8502-624cabe9e817"
 							]
 						}
 					},

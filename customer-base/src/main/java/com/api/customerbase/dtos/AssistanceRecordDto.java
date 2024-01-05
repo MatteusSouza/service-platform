@@ -1,4 +1,4 @@
-package com.api.records.dtos;
+package com.api.customerbase.dtos;
 
 import org.hibernate.validator.constraints.Range;
 import org.hibernate.validator.constraints.br.CNPJ;
