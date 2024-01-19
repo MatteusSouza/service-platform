@@ -1,0 +1,44 @@
+#customer-list {
+  /* background-color: aquamarine; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+#list-container {
+  width: 100%;
+}
+
+#list {
+  /* background-color: wheat; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.list-item {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+
+  /* border: 1px solid tomato; */
+}
+  
+.btn-info {
+  width: 100%;
+  margin-bottom: 10px;
+
+  background: none;
+  font-size: 18px;
+}
+
+#info-container {
+  /* background-color: wheat; */
+  width: 100%;
+  height: 100px;
+}

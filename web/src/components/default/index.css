@@ -1,0 +1,41 @@
+#default {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 95vh;
+    /* margin: 0px; */
+}
+
+ 
+#container {
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 100%;
+    height: 80%;    
+}    
+
+
+#panel {
+    border: 1px solid #ccc;
+    padding: 20px;
+    overflow: auto;
+    height: 80%;
+} 
+
+button {
+    background: none;
+    border: 1px solid #ccc;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    color:#333
+}
+
+button:hover{
+    color: #ff6600;
+    border: 1px solid #ff66008c;
+}
+
+p {
+    font-size: 18px;
+}

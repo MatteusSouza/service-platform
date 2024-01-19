@@ -1,0 +1,26 @@
+nav {
+    padding: 10px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+li {
+    margin-right: 40px;
+}
+
+.buttonMenu {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color:#333,
+}
+
+.buttonMenu:hover {
+    border: none;
+}
