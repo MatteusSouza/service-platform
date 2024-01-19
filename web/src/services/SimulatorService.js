@@ -8,17 +8,41 @@ class SimulatorService extends ServiceInterface {
         this.simulator = new Simulator();
     }
 
-    adicionarUsuario(nome, idade) {
+    adicionarUsuario(
+        cnpj,
+        customerName,
+        address,
+        contactEmail,
+        phoneNumber1,
+        phoneNumber2,
+        personContactName,
+        personProfession,
+        monthlyFee,
+        expirationDay
+        ) {
         try {
-            const user = new User(nome, idade);
-            this.simulator.adicionar(user);
+            this.simulator.adicionar(
+                cnpj,
+                customerName,
+                address,
+                contactEmail,
+                phoneNumber1,
+                phoneNumber2,
+                personContactName,
+                personProfession,
+                monthlyFee,
+                expirationDay);
         } catch (error) {
             throw new Error("SimulatorService in adicionarUsuario.\n" + error);
         }
     }
 
-    buscarUsuario(nome) {
-        return this.simulator.buscar(nome);
+    buscarUsuario(id) {
+        return this.simulator.buscar(id);
+    }
+
+    buscarUsuarioByCNPJ(cnpj) {
+        return this.simulator.buscarCNPJ(cnpj);
     }
 
     buscarTodosUsuarios() {
@@ -26,12 +50,41 @@ class SimulatorService extends ServiceInterface {
         return users;
     }
 
-    deletarUsuario(nome) {
-        this.simulator.deletar(nome);
+    deletarUsuario(id) {
+        this.simulator.deletar(id);
     }
 
-    editarUsuario(nome, novaIdade) {
-        this.simulator.editar(nome, novaIdade);
+    editarUsuario(
+        id, 
+        cnpj,
+        customerName,
+        address,
+        contactEmail,
+        phoneNumber1,
+        phoneNumber2,
+        personContactName,
+        personProfession,
+        monthlyFee,
+        expirationDay
+        ) {
+
+        try {
+            this.simulator.editar(
+                id, 
+                cnpj,
+                customerName,
+                address,
+                contactEmail,
+                phoneNumber1,
+                phoneNumber2,
+                personContactName,
+                personProfession,
+                monthlyFee,
+                expirationDay
+                );
+        } catch (error) {
+            throw new Error("SimulatorService in editarUsuario.\n" + error);
+        }
     }
 }
 

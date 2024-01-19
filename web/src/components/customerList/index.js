@@ -61,7 +61,7 @@ class CustomerList extends View {
         const customers = data.slice().reverse();
 
         customers.forEach((customer) => {
-            const title = `Nome: ${customer.nome} | Idade: ${customer.idade}`;
+            const title = `${customer.customerName} | ${customer.cnpj}`;
             const listItem = document.createElement('div');
             const btnOpenInfo = document.createElement('button');
             
@@ -89,16 +89,19 @@ class CustomerList extends View {
         infoContainer.querySelector('.btn-info').onclick = () => {
             infoContainer.style.display = 'none';
             list.style.display = 'block';
+            this.getUsers();
         }
-
+        
         this.viewModel.addDatabaseObserver(() => {
             console.log('CustomerList: Notified by databaseObserver!');
+            const title = `${this.viewModel.getCurrentUser().customerName} | ${this.viewModel.getCurrentUser().customerName}`;
+            infoContainer.querySelector('.btn-info').textContent = title;
         });
 
         custInfo.onDelete(() => {
             infoContainer.style.display = 'none';
             list.style.display = 'block';
-            this.getUsers();
+            // this.getUsers();
         });
 
         infoView.appendChild(custInfo.render());

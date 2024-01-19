@@ -10,10 +10,32 @@ class CustomerViewModel extends ViewModel {
         super(userController);
     }
 
-    async adicionar(nome, idade) {
+    async adicionar(
+        cnpj,
+        customerName,
+        address,
+        contactEmail,
+        phoneNumber1,
+        phoneNumber2,
+        personContactName,
+        personProfession,
+        monthlyFee,
+        expirationDay
+        ) {
         try {
             console.log('ViewModel: Adicionar foi chamado');
-            await this.userController.adicionarUsuario(nome, idade);
+            await this.userController.adicionarUsuario(       
+                cnpj,
+                customerName,
+                address,
+                contactEmail,
+                phoneNumber1,
+                phoneNumber2,
+                personContactName,
+                personProfession,
+                monthlyFee,
+                expirationDay
+                );
             this.#updateList();
             this.#notifyDatabaseObservers();
         } catch (error) {
@@ -21,12 +43,42 @@ class CustomerViewModel extends ViewModel {
         }
     }
 
-    async atualizar(nome, idade) {
-        console.log('ViewModel: Atualizar foi chamado');
-        await this.userController.editarUsuario(nome, idade);
-        this.#updateList();
-        await this.#updateCurrUser(nome);
-        this.#notifyDatabaseObservers();
+    async atualizar(
+        id, 
+        cnpj,
+        customerName,
+        address,
+        contactEmail,
+        phoneNumber1,
+        phoneNumber2,
+        personContactName,
+        personProfession,
+        monthlyFee,
+        expirationDay
+        ) {
+
+        try {
+            console.log('ViewModel: Atualizar foi chamado');
+            await this.userController.editarUsuario(
+                id, 
+                cnpj,
+                customerName,
+                address,
+                contactEmail,
+                phoneNumber1,
+                phoneNumber2,
+                personContactName,
+                personProfession,
+                monthlyFee,
+                expirationDay
+                );
+            this.#updateList();
+            await this.#updateCurrUser(id);
+            this.#notifyDatabaseObservers();
+        } catch (error) {
+            console.log(error);
+            throw new Error("CustomerViewModel in Atualizar.\n" + error);
+        }
     }
 
     buscarTodosUsuarios() {
@@ -35,9 +87,9 @@ class CustomerViewModel extends ViewModel {
         return usersArr;
     }
 
-    async deletarUsuario(nome) {
+    async deletarUsuario(id) {
         console.log('ViewModel: Deletar foi chamado');
-        await this.userController.deletarUsuario(nome);
+        await this.userController.deletarUsuario(id);
         this.#updateList();
         this.#notifyDatabaseObservers();
     }
@@ -80,8 +132,8 @@ class CustomerViewModel extends ViewModel {
         });
     }
 
-    async #updateCurrUser(nome) {
-        const user = await this.userController.buscarUsuario(nome);
+    async #updateCurrUser(id) {
+        const user = await this.userController.buscarUsuario(id);
         this.setCurrentUser(user);
     }
 }

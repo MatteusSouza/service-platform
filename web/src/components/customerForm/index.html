@@ -1,13 +1,53 @@
 <div id="form-container">
     <form id="customer-form">
-        <label for="nome">Nome:</label>
-        <input type="text" name="nome">
+        <label for="cnpj">CNPJ:</label>
+        <input type="text" name="cnpj" class="notNullable">
     
         <br>
     
-        <label for="idade">Idade:</label>
-        <input type="number" name="idade">
+        <label for="customerName">Nome do Cliente:</label>
+        <input type="text" name="customerName" class="notNullable">
+
+        <br>
+
+        <label for="address">Endereço:</label>
+        <input type="text" name="address" class="notNullable">
+
+        <br>
+
+        <label for="contactEmail">E-mail:</label>
+        <input type="email" name="contactEmail" class="notNullable">
+
+        <br>
+        
+        <label for="phoneNumber1">Telefone de contato 1:</label>
+        <input type="number" name="phoneNumber1" class="notNullable">
+
+        <br>
+
+        <label for="phoneNumber2">Telefone de contato 2:</label>
+        <input type="number" name="phoneNumber2">
+
+        <br>
+
+        <label for="personContactName">Pessoa Responsavel:</label>
+        <input type="text" name="personContactName">
+
+        <br>
+
+        <label for="personProfession">Função do Responsável:</label>
+        <input type="text" name="personProfession">
+
+        <br>
     
+        <label for="monthlyFee">Taxa Mensal: (Caso exista)</label>
+        <input type="number" name="monthlyFee">
+
+        <br>
+
+        <label for="expirationDay">Dia do vencimento: (Caso exista)</label>
+        <input type="number" name="expirationDay">
+        
         <br><br>
     
         <button type="submit">Enviar</button>

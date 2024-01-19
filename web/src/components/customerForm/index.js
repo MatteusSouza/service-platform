@@ -10,8 +10,18 @@ document.head.appendChild(style);
 
 const form = element.querySelector('#customer-form');
 const btnSend = form.querySelector('button');
-const inputNome = form.elements['nome'];
-const inputIdade = form.elements['idade'];
+
+const cnpj = form.elements['cnpj'];
+const customerName = form.elements['customerName'];
+const address = form.elements['address'];
+const contactEmail = form.elements['contactEmail'];
+const phoneNumber1 = form.elements['phoneNumber1'];
+const phoneNumber2 = form.elements['phoneNumber2'];
+const personContactName = form.elements['personContactName'];
+const personProfession = form.elements['personProfession'];
+const monthlyFee = form.elements['monthlyFee'];
+const expirationDay = form.elements['expirationDay'];
+
 
 let edit = false;
 
@@ -23,42 +33,86 @@ class CustomerForm extends View {
 
     render() {
         console.log("CustomerForm: rendered!");
+        console.log("rendered: isedit:",edit)
         return element;
     }
 
     async #submit() {
         console.log('\nCustomerForm: Submit called!');
+        console.log('CustomerForm: submit(): edit? ',edit);
         try {
             if(!edit) {
                 console.log("CustomerForm: Submit: It's not an edit!");
-                await this.viewModel.adicionar(inputNome.value, inputIdade.value);
+                await this.viewModel.adicionar(
+                    cnpj.value,
+                    customerName.value,
+                    address.value,
+                    contactEmail.value,
+                    phoneNumber1.value,
+                    phoneNumber2.value,
+                    personContactName.value,
+                    personProfession.value,
+                    monthlyFee.value,
+                    expirationDay.value
+                );
             }else {
                 console.log("CustomerForm: Submit: It's an Edit!")
-                await this.viewModel.atualizar(inputNome.value, inputIdade.value);
+                const id = this.viewModel.getCurrentUser().id;
+                await this.viewModel.atualizar(
+                    id,
+                    cnpj.value,
+                    customerName.value,
+                    address.value,
+                    contactEmail.value,
+                    phoneNumber1.value,
+                    phoneNumber2.value,
+                    personContactName.value,
+                    personProfession.value,
+                    monthlyFee.value,
+                    expirationDay.value
+                );
             }
         } catch (error) {
             throw new Error("CustomerForm: can't submit.\n",error);
         }
     }
 
-    loadUser(nome, idade, isEdit) {
-        if (isEdit == undefined && isEdit == null) {
-            edit = true
-        }else {
-            edit = isEdit;
+    loadUser(user) {
+        edit = true;
+        cnpj.disabled = 'true';
+
+        if (cnpj && customerName && address && contactEmail && phoneNumber1) {
+            cnpj.value = user.cnpj;
+            customerName.value = user.customerName;
+            address.value = user.address;
+            contactEmail.value = user.contactEmail;
+            phoneNumber1.value = user.phoneNumber1;
+            phoneNumber2.value = user.phoneNumber2;
+            personContactName.value = user.personContactName;
+            personProfession.value = user.personProfession;
+            monthlyFee.value = user.monthlyFee;
+            expirationDay.value = user.expirationDay;
         }
 
-        if (nome != undefined && nome != null && idade != undefined && idade != null ) {
-            inputNome.value = nome;
-            inputIdade.value = idade;
-        }
     }
 
     resetView() {
         console.log("CustomerForm: View reseted!");
-        inputNome.value = '';
-        inputIdade.value = '';
+        cnpj.value = '';
+        customerName.value = '';
+        address.value = '';
+        contactEmail.value = '';
+        phoneNumber1.value = '';
+        phoneNumber2.value = '';
+        personContactName.value = '';
+        personProfession.value = '';
+        monthlyFee.value = '';
+        expirationDay.value = '';
+        
         edit = false;
+        cnpj.disabled = null;
+
+        this.#inputResetColor(form);
     }
 
     #createView() {
@@ -78,9 +132,15 @@ class CustomerForm extends View {
 
             const msg = edit ? "editado com sucesso!" : "cadastrado com sucesso!"
 
-            if (inputNome.value != '' && inputIdade.value != '') {
+            if (
+                cnpj.value != '' &&
+                customerName.value != '' &&
+                address.value != '' &&
+                contactEmail.value != '' &&
+                phoneNumber1.value != ''
+                ) {
                 this.#submit().then( res => {
-                    alert(`${inputNome.value} ${msg}`)
+                    alert(`${customerName.value} ${msg}`);
                     this.resetView();
                 }).catch(error => {
                     alert(`Não foi possivel efetuar a operação!`)
@@ -95,10 +155,25 @@ class CustomerForm extends View {
     #inputVerify(form) {
         console.log("CustomerForm: inputVerify called")
         form.querySelectorAll('input').forEach((input) => {
-            if (input.value == '') {
-                input.style.borderColor = 'red';
-            }else {
-                input.style.borderColor = '#333';
+            if(input.classList.value) {
+                if (input.value == '') {
+                    input.style.borderColor = 'red';
+                }else {
+                    input.style.borderColor = '#333';
+                }
+            }
+        })
+    }
+
+    #inputResetColor(form) {
+        console.log("CustomerForm: inputVerify called")
+        form.querySelectorAll('input').forEach((input) => {
+            if(input.classList.value) {
+                if (input.value == '') {
+                    input.style.borderColor = 'black';
+                }else {
+                    input.style.borderColor = 'black';
+                }
             }
         })
     }

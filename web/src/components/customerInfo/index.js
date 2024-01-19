@@ -34,18 +34,25 @@ class CustomerInfo extends View{
     }
 
     onDelete(callback) {
-        deleteCustomer = (nome) => {
-            this.viewModel.deletarUsuario(nome);
+        deleteCustomer = (id) => {
+            this.viewModel.deletarUsuario(id);
             callback();
         }
     }
 
-    updateView(nome, idade) {
+    updateView(user) {
         element.querySelector("#form-group").appendChild(custForm.render());
-        element.querySelector("#customer-nome").textContent = `${nome}`;
-        element.querySelector("#customer-idade").textContent = `${idade}`;
-        id = nome;
-        custForm.loadUser(nome, idade);
+        element.querySelector("#customer-cnpj").textContent = `${user.cnpj}`;
+        element.querySelector("#customer-name").textContent = `${user.customerName}`;
+        element.querySelector("#customer-address").textContent = `${user.address}`;
+        element.querySelector("#customer-contactEmail").textContent = `${user.contactEmail}`;
+        element.querySelector("#customer-phoneNumber1").textContent = `${user.phoneNumber1}`;
+        element.querySelector("#customer-phoneNumber2").textContent = `${user.phoneNumber2}`;
+        element.querySelector("#customer-personContactName").textContent = `${user.personContactName}`;
+        element.querySelector("#customer-personProfession").textContent = `${user.personProfession}`;
+        element.querySelector("#customer-monthlyFee").textContent = `${user.monthlyFee}`;
+        element.querySelector("#customer-expirationDay").textContent = `${user.expirationDay}`;
+        custForm.loadUser(user, true);
     }
 
     #editView() {
@@ -78,8 +85,9 @@ class CustomerInfo extends View{
         this.viewModel.addLoadedUserObserver( ()=> {
             console.log('CustomerInfo: addLoadedUserObserver called');
             const user = this.viewModel.getCurrentUser();
+            id = user.id;
             console.log('CustomerInfo: currentUser ',user);
-            this.updateView(user.nome, user.idade);
+            this.updateView(user);
             this.#infoView();
         });
 

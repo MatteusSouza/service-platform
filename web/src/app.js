@@ -36,7 +36,7 @@ customerList.onUpdate(async () => {
 
 panel.updatePanel(customerList);
 
-// // Atualiza o componente atual com base na navegação do menu
+// Atualiza o componente atual com base na navegação do menu
 menu.onNavigate((componentName) => {
     switch(componentName) {
         case 'Listar Clientes':
