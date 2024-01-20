@@ -1,6 +1,5 @@
 const ServiceInterface = require('./ServiceInterface');
 const Simulator = require('../api/ApiSimulator').default;
-const User = require('../models/User');
 
 class SimulatorService extends ServiceInterface {
     constructor() {
@@ -8,30 +7,13 @@ class SimulatorService extends ServiceInterface {
         this.simulator = new Simulator();
     }
 
-    adicionarUsuario(
-        cnpj,
-        customerName,
-        address,
-        contactEmail,
-        phoneNumber1,
-        phoneNumber2,
-        personContactName,
-        personProfession,
-        monthlyFee,
-        expirationDay
+    adicionarUsuario( cnpj, customerName, address, contactEmail, phoneNumber1, phoneNumber2, 
+            personContactName, personProfession, monthlyFee, expirationDay 
         ) {
         try {
-            this.simulator.adicionar(
-                cnpj,
-                customerName,
-                address,
-                contactEmail,
-                phoneNumber1,
-                phoneNumber2,
-                personContactName,
-                personProfession,
-                monthlyFee,
-                expirationDay);
+            this.simulator.adicionar( cnpj, customerName, address, contactEmail, phoneNumber1, phoneNumber2, 
+                personContactName, personProfession, monthlyFee, expirationDay
+            );
         } catch (error) {
             throw new Error("SimulatorService in adicionarUsuario.\n" + error);
         }
@@ -54,34 +36,14 @@ class SimulatorService extends ServiceInterface {
         this.simulator.deletar(id);
     }
 
-    editarUsuario(
-        id, 
-        cnpj,
-        customerName,
-        address,
-        contactEmail,
-        phoneNumber1,
-        phoneNumber2,
-        personContactName,
-        personProfession,
-        monthlyFee,
-        expirationDay
+    editarUsuario( id, cnpj, customerName, address, contactEmail, phoneNumber1, phoneNumber2, 
+            personContactName, personProfession, monthlyFee, expirationDay
         ) {
 
         try {
-            this.simulator.editar(
-                id, 
-                cnpj,
-                customerName,
-                address,
-                contactEmail,
-                phoneNumber1,
-                phoneNumber2,
-                personContactName,
-                personProfession,
-                monthlyFee,
-                expirationDay
-                );
+            this.simulator.editar( id, cnpj, customerName, address, contactEmail, phoneNumber1, phoneNumber2,
+                personContactName, personProfession, monthlyFee, expirationDay
+            );
         } catch (error) {
             throw new Error("SimulatorService in editarUsuario.\n" + error);
         }

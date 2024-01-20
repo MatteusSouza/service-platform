@@ -7,10 +7,12 @@ class ApiService extends ServiceInterface {
         this.apiBaseUrl = apiBaseUrl;
     }
 
-    async adicionarUsuario(nome, idade) {
+    async adicionarUsuario(cnpj, customerName, address, contactEmail, phoneNumber1, phoneNumber2, 
+            personContactName, personProfession, monthlyFee, expirationDay
+        ) {
         try {
-            const user = { nome, idade };
-            const response = await axios.post(`${this.apiBaseUrl}/usuarios`, user);
+            const user = { cnpj, customerName, address, contactEmail, phoneNumber1, phoneNumber2, personContactName, personProfession, monthlyFee, expirationDay };
+            const response = await axios.post(`${this.apiBaseUrl}/users`, user);
             return response.data;
         } catch (error) {
             console.error('Erro ao adicionar usuário:', error.message);
@@ -18,9 +20,9 @@ class ApiService extends ServiceInterface {
         }
     }
 
-    async buscarUsuario(nome) {
+    async buscarUsuario(id) {
         try {
-            const response = await axios.get(`${this.apiBaseUrl}/usuarios?nome=${nome}`);
+            const response = await axios.get(`${this.apiBaseUrl}/users/${id}`);
             return response.data;
         } catch (error) {
             console.error('Erro ao buscar usuário:', error.message);
@@ -30,7 +32,7 @@ class ApiService extends ServiceInterface {
 
     async buscarTodosUsuarios() {
         try {
-            const response = await axios.get(`${this.apiBaseUrl}/usuarios?users}`);
+            const response = await axios.get(`${this.apiBaseUrl}/users?users}`);
             return response.data;
         } catch (error) {
             console.error('Erro ao buscar usuário:', error.message);
@@ -38,19 +40,23 @@ class ApiService extends ServiceInterface {
         }
     }
 
-    async deletarUsuario(nome) {
+    async deletarUsuario(id) {
         try {
-            await axios.delete(`${this.apiBaseUrl}/usuarios/${nome}`);
+            await axios.delete(`${this.apiBaseUrl}/users/${id}`);
         } catch (error) {
             console.error('Erro ao deletar usuário:', error.message);
             throw new Error('Falha ao deletar usuário. Por favor, tente novamente.');
         }
     }
 
-    async editarUsuario(nome, novaIdade) {
+    async editarUsuario(id, cnpj, customerName, address, contactEmail, phoneNumber1, phoneNumber2, 
+            personContactName, personProfession, monthlyFee, expirationDay
+        ) {
         try {
-            const user = { nome, idade: novaIdade };
-            const response = await axios.put(`${this.apiBaseUrl}/usuarios/${nome}`, user);
+            const user = {id, cnpj, customerName, address, contactEmail, phoneNumber1, phoneNumber2, 
+                personContactName, personProfession, monthlyFee, expirationDay
+            };
+            const response = await axios.put(`${this.apiBaseUrl}/users/${id}`, user);
             return response.data;
         } catch (error) {
             console.error('Erro ao editar usuário:', error.message);

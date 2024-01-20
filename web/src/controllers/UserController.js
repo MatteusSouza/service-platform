@@ -3,30 +3,12 @@ class UserController {
         this.service = service;
     }
 
-    async adicionarUsuario(
-        cnpj,
-        customerName,
-        address,
-        contactEmail,
-        phoneNumber1,
-        phoneNumber2,
-        personContactName,
-        personProfession,
-        monthlyFee,
-        expirationDay
+    async adicionarUsuario( cnpj, customerName, address, contactEmail, phoneNumber1, phoneNumber2, 
+            personContactName, personProfession, monthlyFee, expirationDay
         ) {
         try {
-            await this.service.adicionarUsuario(
-                cnpj,
-                customerName,
-                address,
-                contactEmail,
-                phoneNumber1,
-                phoneNumber2,
-                personContactName,
-                personProfession,
-                monthlyFee,
-                expirationDay
+            await this.service.adicionarUsuario( cnpj, customerName, address, contactEmail, 
+                phoneNumber1, phoneNumber2, personContactName, personProfession, monthlyFee, expirationDay
             );
         } catch (error) {
             throw new Error ("UserController in adicionarUsuario.\n"+error)
@@ -53,33 +35,13 @@ class UserController {
         await this.service.deletarUsuario(id);
     }
 
-    async editarUsuario(
-        id, 
-        cnpj,
-        customerName,
-        address,
-        contactEmail,
-        phoneNumber1,
-        phoneNumber2,
-        personContactName,
-        personProfession,
-        monthlyFee,
-        expirationDay
+    async editarUsuario( id, cnpj, customerName, address, contactEmail, phoneNumber1, phoneNumber2, 
+            personContactName, personProfession, monthlyFee, expirationDay
         ) {
 
         try {
-            await this.service.editarUsuario(
-                id, 
-                cnpj,
-                customerName,
-                address,
-                contactEmail,
-                phoneNumber1,
-                phoneNumber2,
-                personContactName,
-                personProfession,
-                monthlyFee,
-                expirationDay
+            await this.service.editarUsuario( id, cnpj, customerName, address, contactEmail, 
+                phoneNumber1, phoneNumber2, personContactName, personProfession, monthlyFee, expirationDay
             );
         } catch (error) {
             throw new Error ("UserController in editarUsuario.\n"+error);

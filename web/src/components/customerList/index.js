@@ -24,28 +24,23 @@ class CustomerList extends View {
 
     render() {
         console.log("CustomerList: Rendered!");
-        this.getUsers();
+        this.#updateList()
         return element;
     }
 
     resetView(){
+        console.log("CustomerList: resetView was called!");
         custInfo.resetView();
         infoContainer.style.display = 'none';
     }
 
-    onUpdate(getUsers) {
-        this.getUsers = () => {
-            getUsers().then(users => {
-                this.#populate(users);
-            })
-            .catch(error => {
-                console.error("Erro ao obter usuários:", error);
-                this.#populate([]);
-            });
-        }
+    #updateList() {
+        this.viewModel.buscarTodosUsuarios().then(users => {
+            this.#populateDivList(users);
+        });
     }
 
-    #updateList(list) {
+    #updateListContainer(list) {
         const listContainer = element.querySelector('#list-container');
         if (currentList !== null) {
             listContainer.removeChild(currentList);
@@ -54,7 +49,7 @@ class CustomerList extends View {
         listContainer.appendChild(currentList);
     }
 
-    #populate(data) {
+    #populateDivList(data) {
         const list = document.createElement('div');
         list.setAttribute('id','list');
 
@@ -70,7 +65,7 @@ class CustomerList extends View {
 
             btnOpenInfo.innerText = title;
             btnOpenInfo.onclick = () => {
-                console.log("clicou em: "+ customer.nome);
+                console.log("Clicked on: "+ customer.customerName);
                 infoContainer.querySelector('.btn-info').textContent = title;
                 infoContainer.style.display = 'block';
                 list.style.display = 'none';
@@ -81,33 +76,38 @@ class CustomerList extends View {
             list.appendChild(listItem);
         });
 
-        this.#updateList(list);
+        this.#updateListContainer(list);
     }
 
     #createView() {
         element.querySelector('#info-container').style.display = 'none';
+        
+        //closeInfo
         infoContainer.querySelector('.btn-info').onclick = () => {
             infoContainer.style.display = 'none';
             list.style.display = 'block';
-            this.getUsers();
+            this.#updateList()
         }
         
         this.viewModel.addDatabaseObserver(() => {
             console.log('CustomerList: Notified by databaseObserver!');
-            const title = `${this.viewModel.getCurrentUser().customerName} | ${this.viewModel.getCurrentUser().customerName}`;
-            infoContainer.querySelector('.btn-info').textContent = title;
+            
+            const currUser = this.viewModel.getCurrentUser();
+            if (currUser) {
+                const title = `${this.viewModel.getCurrentUser().customerName} | ${this.viewModel.getCurrentUser().customerName}`;
+                infoContainer.querySelector('.btn-info').textContent = title;
+            }
         });
 
         custInfo.onDelete(() => {
             infoContainer.style.display = 'none';
             list.style.display = 'block';
-            // this.getUsers();
+            this.#updateList();
         });
 
         infoView.appendChild(custInfo.render());
     }
 
-    // #
 }
 
 export default CustomerList;

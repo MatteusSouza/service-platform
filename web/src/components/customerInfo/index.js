@@ -35,12 +35,14 @@ class CustomerInfo extends View{
 
     onDelete(callback) {
         deleteCustomer = (id) => {
-            this.viewModel.deletarUsuario(id);
-            callback();
+            this.viewModel.deletarUsuario(id).then(() => {
+                callback();
+            });
         }
     }
 
     updateView(user) {
+        console.log("CustomerInfo: UpdateView was called!")
         element.querySelector("#form-group").appendChild(custForm.render());
         element.querySelector("#customer-cnpj").textContent = `${user.cnpj}`;
         element.querySelector("#customer-name").textContent = `${user.customerName}`;
@@ -52,7 +54,7 @@ class CustomerInfo extends View{
         element.querySelector("#customer-personProfession").textContent = `${user.personProfession}`;
         element.querySelector("#customer-monthlyFee").textContent = `${user.monthlyFee}`;
         element.querySelector("#customer-expirationDay").textContent = `${user.expirationDay}`;
-        custForm.loadUser(user, true);
+        custForm.loadUser(user);
     }
 
     #editView() {
@@ -70,6 +72,7 @@ class CustomerInfo extends View{
     }
 
     resetView(){
+        console.log("CustomerInfo: resetView was called!");
         this.#infoView();
         custForm.resetView();
     }
@@ -83,7 +86,7 @@ class CustomerInfo extends View{
         });
 
         this.viewModel.addLoadedUserObserver( ()=> {
-            console.log('CustomerInfo: addLoadedUserObserver called');
+            console.log('CustomerInfo: addLoadedUserObserver was called');
             const user = this.viewModel.getCurrentUser();
             id = user.id;
             console.log('CustomerInfo: currentUser ',user);

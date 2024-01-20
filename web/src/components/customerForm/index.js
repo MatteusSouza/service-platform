@@ -33,17 +33,14 @@ class CustomerForm extends View {
 
     render() {
         console.log("CustomerForm: rendered!");
-        console.log("rendered: isedit:",edit)
         return element;
     }
 
     async #submit() {
-        console.log('\nCustomerForm: Submit called!');
-        console.log('CustomerForm: submit(): edit? ',edit);
+        console.log('\nCustomerForm: Submit was called! Edit mode?', edit);
         try {
             if(!edit) {
-                console.log("CustomerForm: Submit: It's not an edit!");
-                await this.viewModel.adicionar(
+                await this.viewModel.adicionar( 
                     cnpj.value,
                     customerName.value,
                     address.value,
@@ -54,9 +51,8 @@ class CustomerForm extends View {
                     personProfession.value,
                     monthlyFee.value,
                     expirationDay.value
-                );
+                    );
             }else {
-                console.log("CustomerForm: Submit: It's an Edit!")
                 const id = this.viewModel.getCurrentUser().id;
                 await this.viewModel.atualizar(
                     id,
@@ -73,11 +69,12 @@ class CustomerForm extends View {
                 );
             }
         } catch (error) {
-            throw new Error("CustomerForm: can't submit.\n",error);
+            throw new Error("CustomerForm: can't submit.\n" + error);
         }
     }
 
     loadUser(user) {
+        console.log("CustomerForm: LoadUser was called!");
         edit = true;
         cnpj.disabled = 'true';
 
@@ -139,9 +136,13 @@ class CustomerForm extends View {
                 contactEmail.value != '' &&
                 phoneNumber1.value != ''
                 ) {
-                this.#submit().then( res => {
+                    this.#submit().then( res => {
                     alert(`${customerName.value} ${msg}`);
-                    this.resetView();
+                    
+                    if (!edit){
+                        this.resetView();
+                    }
+                    console.log("Still in edit mode?",edit);
                 }).catch(error => {
                     alert(`Não foi possivel efetuar a operação!`)
                     console.log("CustomerForm: error.\n",error);
@@ -153,7 +154,7 @@ class CustomerForm extends View {
     }
 
     #inputVerify(form) {
-        console.log("CustomerForm: inputVerify called")
+        console.log("CustomerForm: inputVerify was called")
         form.querySelectorAll('input').forEach((input) => {
             if(input.classList.value) {
                 if (input.value == '') {
@@ -166,7 +167,6 @@ class CustomerForm extends View {
     }
 
     #inputResetColor(form) {
-        console.log("CustomerForm: inputVerify called")
         form.querySelectorAll('input').forEach((input) => {
             if(input.classList.value) {
                 if (input.value == '') {

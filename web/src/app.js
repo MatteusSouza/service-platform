@@ -30,10 +30,6 @@ const customerInfo = new CustomerInfo(customerViewModel, customerForm);
 const customerList = new CustomerList(customerViewModel, customerInfo);
 const about = new About();
 
-customerList.onUpdate(async () => {
-    return await userController.buscarTodosUsuarios();
-});
-
 panel.updatePanel(customerList);
 
 // Atualiza o componente atual com base na navegação do menu
