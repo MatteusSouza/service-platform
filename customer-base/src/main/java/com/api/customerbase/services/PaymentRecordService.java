@@ -1,7 +1,7 @@
-package com.api.records.services;
+package com.api.customerbase.services;
 
-import com.api.records.models.PaymentRecordModel;
-import com.api.records.repositories.PaymentRecordRepository;
+import com.api.customerbase.models.PaymentRecordModel;
+import com.api.customerbase.repositories.PaymentRecordRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;

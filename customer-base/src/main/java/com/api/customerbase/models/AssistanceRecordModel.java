@@ -1,4 +1,4 @@
-package com.api.records.models;
+package com.api.customerbase.models;
 
 import javax.persistence.*;
 import java.math.BigDecimal;

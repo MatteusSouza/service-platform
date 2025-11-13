@@ -1,8 +1,8 @@
-package com.api.records.controllers;
+package com.api.customerbase.controllers;
 
-import com.api.records.dtos.PaymentRecordDto;
-import com.api.records.models.PaymentRecordModel;
-import com.api.records.services.PaymentRecordService;
+import com.api.customerbase.dtos.PaymentRecordDto;
+import com.api.customerbase.models.PaymentRecordModel;
+import com.api.customerbase.services.PaymentRecordService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

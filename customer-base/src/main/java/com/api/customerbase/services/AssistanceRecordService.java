@@ -1,7 +1,7 @@
-package com.api.records.services;
+package com.api.customerbase.services;
 
-import com.api.records.models.AssistanceRecordModel;
-import com.api.records.repositories.AssistanceRecordRepository;
+import com.api.customerbase.models.AssistanceRecordModel;
+import com.api.customerbase.repositories.AssistanceRecordRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;

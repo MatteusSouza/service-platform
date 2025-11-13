@@ -1,6 +1,6 @@
-package com.api.records.repositories;
+package com.api.customerbase.repositories;
 
-import com.api.records.models.PaymentRecordModel;
+import com.api.customerbase.models.PaymentRecordModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
