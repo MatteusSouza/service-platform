@@ -1,0 +1,38 @@
+services:
+  app:
+    build: .
+    image: serv-plat
+    container_name: serv-plat
+    restart: always
+    environment:
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_URL=jdbc:postgresql://db:5432/service-platform
+    networks:
+      - public-net
+      - internal-net
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+  db:
+    image: postgres:18.0-alpine3.22
+    container_name: database
+    restart: always
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=service-platform
+    networks:
+      - internal-net
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    
+networks:
+  public-net:
+    driver: bridge
+  internal-net:
+    driver: bridge
+
+volumes:
+  db_data:

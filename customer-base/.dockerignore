@@ -1,0 +1,5 @@
+Dockerfile
+.gitignore
+.dockerirnore
+mvnw.cmd
+docker-compose.yml
